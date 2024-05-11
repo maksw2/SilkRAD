@@ -41,5 +41,5 @@ jobs:
       uses: actions/upload-artifact@v4.3.3
       with:
         name: SilkRAD
-        path: SilkRAD/code/Release
+        path: D:\a\SilkRAD\SilkRAD\code\Release
         if-no-files-found: 'error'
