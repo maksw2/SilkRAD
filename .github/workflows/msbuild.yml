@@ -18,14 +18,14 @@ jobs:
       id: cuda-toolkit
       with:
         cuda: '10.0.130'
-		method: local
-		sub-packages: '["nvcc", "cudart", "cublas", "cublas_dev", "thrust", "visual_studio_integration"]'
+	method: local
+	sub-packages: '["nvcc", "cudart", "cublas", "cublas_dev", "thrust", "visual_studio_integration"]'
     - run: echo "Cuda install location ${{steps.cuda-toolkit.outputs.CUDA_PATH}}"
     - name: Set up MSBuild
       uses: microsoft/setup-msbuild@v2
       with:
         vs-version: '15.9'
-		msbuild-architecture: x64
+	msbuild-architecture: x64
     - name: copy buildcustomizations
       shell: bash
       run: |
