@@ -22,7 +22,7 @@ jobs:
     - name: Set up MSBuild
       uses: microsoft/setup-msbuild@v2
       with:
-        vs-version: '15.9'
+        vs-version: '15.1'
     - name: copy buildcustomizations
       shell: bash
       run: |
