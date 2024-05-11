@@ -11,7 +11,7 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Set up CUDA toolkit
       uses: Jimver/cuda-toolkit@v0.2.15
@@ -22,7 +22,10 @@ jobs:
     - name: Set up MSBuild
       uses: microsoft/setup-msbuild@v2
       with:
-        vs-version: '15.1'
+        vs-version: '15.9'
+    - name: Set up Windows SDK
+    - uses: GuillaumeFalourd/setup-windows10-sdk-action@v2
+      with: sdk-version: 17134
     - name: copy buildcustomizations
       shell: bash
       run: |
