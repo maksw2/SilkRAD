@@ -38,7 +38,8 @@ jobs:
     - name: Build project
       run: msbuild code/SilkRAD.sln /p:Configuration=Release
     - name: Publish Artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4.3.3
       with:
         name: SilkRAD
-        path: code/Release
+        path: SilkRAD/code/Release
+        if-no-files-found: 'error'
