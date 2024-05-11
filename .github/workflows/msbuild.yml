@@ -23,7 +23,6 @@ jobs:
       uses: microsoft/setup-msbuild@v2
       with:
         vs-version: '15.9'
-	msbuild-architecture: x64
     - name: copy buildcustomizations
       shell: bash
       run: |
