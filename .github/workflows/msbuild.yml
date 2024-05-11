@@ -21,7 +21,7 @@ jobs:
     - name: Set up MSBuild
       uses: microsoft/setup-msbuild@v2
       with:
-        vs-version: '15.9'
+        vs-version: '15.7'
     - name: Set up Windows SDK
       uses: maksw2/setup-windows10-sdk-action@v3
       id: windows-sdk
