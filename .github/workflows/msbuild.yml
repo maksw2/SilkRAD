@@ -18,7 +18,7 @@ jobs:
       id: cuda-toolkit
       with:
         cuda: '10.0.130'
-	method: local
+	method: 'local'
 	sub-packages: '["nvcc", "cudart", "cublas", "cublas_dev", "thrust", "visual_studio_integration"]'
     - run: echo "Cuda install location ${{steps.cuda-toolkit.outputs.CUDA_PATH}}"
     - name: Set up MSBuild
