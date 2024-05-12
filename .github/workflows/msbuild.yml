@@ -45,7 +45,7 @@ jobs:
         name: SilkRAD Debug
         path: code\x64\Debug
         if-no-files-found: 'error'
-	compression-level: 0
+        compression-level: 0
    - name: Publish Artifact Release
 	name: SilkRAD Release
 	path: code\x64\Release
