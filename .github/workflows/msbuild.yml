@@ -35,18 +35,19 @@ jobs:
         cp -R "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v10.0\\extras\\visual_studio_integration\\MSBuildExtensions\\." "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v150\BuildCustomizations"
     - name: Restore NuGet packages
       run: nuget restore code/SilkRAD.sln
+    - name: Build Debug
+      run: msbuild code/SilkRAD.sln /p:Configuration=Debug
     - name: Build Release
       run: msbuild code/SilkRAD.sln /p:Configuration=Release
-	  - name: Build Debug
-	    run: msbuild code/SilkRAD.sln /p:Configuration=Debug
-    - name: Publish Artifact
+    - name: Publish Artifact Debug
       uses: actions/upload-artifact@v4.3.3
       with:
-        name: SilkRAD Release
-        path: code\x64\Release
+        name: SilkRAD Debug
+        path: code\x64\Debug
         if-no-files-found: 'error'
-		compression-level: 0
-		name: SilkRAD Debug
-		path: code\x64\Debug
-		if-no-files-found: 'error'
-		compression-level: 0
+	compression-level: 0
+   - name: Publish Artifact Release
+	name: SilkRAD Release
+	path: code\x64\Release
+	if-no-files-found: 'error'
+	compression-level: 0
