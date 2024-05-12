@@ -46,8 +46,10 @@ jobs:
         path: code\x64\Debug
         if-no-files-found: 'error'
         compression-level: 0
-   - name: Publish Artifact Release
-	name: SilkRAD Release
-	path: code\x64\Release
-	if-no-files-found: 'error'
-	compression-level: 0
+    - name: Publish Artifact Release
+      uses: actions/upload-artifact@v4.3.3
+      with:
+        name: SilkRAD Release
+        path: code\x64\Release
+        if-no-files-found: 'error'
+        compression-level: 0
