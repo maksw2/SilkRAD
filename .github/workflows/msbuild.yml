@@ -43,13 +43,17 @@ jobs:
       uses: actions/upload-artifact@v4.3.3
       with:
         name: SilkRAD Debug
-        path: code\x64\Debug
+        path: |
+          code\x64\Debug\*.dll
+          code\x64\Debug\*.exe
         if-no-files-found: 'error'
         compression-level: 0
     - name: Publish Artifact Release
       uses: actions/upload-artifact@v4.3.3
       with:
         name: SilkRAD Release
-        path: code\x64\Release
+        path: |
+          code\x64\Release\*.dll
+          code\x64\Release\*.exe
         if-no-files-found: 'error'
         compression-level: 0
