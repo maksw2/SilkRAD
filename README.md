@@ -1,3 +1,4 @@
+this fork added automatic compilation and upgraded windows sdk from 17134 to 17763
 # GPU-Accelerated Source Engine Lightmap Compilation
 **Ryan Lam (rwl) and Lucy Tan (jltan)**
 
