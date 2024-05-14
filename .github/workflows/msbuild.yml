@@ -46,6 +46,7 @@ jobs:
         path: |
           code\x64\Debug\*.dll
           code\x64\Debug\*.exe
+          code\x64\Debug\*.pdb
         if-no-files-found: 'error'
         compression-level: 0
     - name: Publish Artifact Release
@@ -55,5 +56,6 @@ jobs:
         path: |
           code\x64\Release\*.dll
           code\x64\Release\*.exe
+          code\x64\Release\*.pdb
         if-no-files-found: 'error'
         compression-level: 0
