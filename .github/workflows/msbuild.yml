@@ -12,8 +12,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: Set up MSBuild
-      shell: cmd
+    - name: Set up MSBuild and NuGet Path
+      shell: bash
       run:
         echo "Setting up MSBuild and NuGet paths..."
           echo "D:\vs2017\VC\Tools\MSVC\14.16.27023\bin\HostX64\x64" >> %GITHUB_PATH%
