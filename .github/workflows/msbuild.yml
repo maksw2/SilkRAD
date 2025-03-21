@@ -68,10 +68,12 @@ jobs:
             Add-Content -Path $env:GITHUB_PATH -Value $path
         }
     - name: Build Debug
+      shell: cmd
       run: |
         cd D:\actions-runner\_work\SilkRAD\SilkRAD\code
         msbuild SilkRAD.sln /p:Configuration=Debug
     - name: Build Release
+      shell: cmd
       run: |
         cd D:\actions-runner\_work\SilkRAD\SilkRAD\code
         msbuild SilkRAD.sln /p:Configuration=Release
