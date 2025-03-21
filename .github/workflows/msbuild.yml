@@ -70,11 +70,10 @@ jobs:
       with:
         name: SilkRAD Debug
         path: |
-          'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Debug\cudart32_100.dll'
-          'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Debug\cudart64_100.dll'
-          'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Debug\*.exe'
-          'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Debug\*.pdb'
-        # it already is my pc only so what do i care
+          'code\x64\Debug\cudart32_100.dll'
+          'code\x64\Debug\cudart64_100.dll'
+          'code\x64\Debug\*.exe'
+          'code\x64\Debug\*.pdb'
         if-no-files-found: 'error'
         compression-level: 0
     - name: Publish Artifact Release
@@ -82,9 +81,9 @@ jobs:
       with:
         name: SilkRAD Release
         path: |
-          'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Release\cudart32_100.dll'
-          'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Release\cudart64_100.dll'
-          'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Release\*.exe'
-          'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Release\*.pdb'
+          'code\x64\Release\cudart32_100.dll'
+          'code\x64\Release\cudart64_100.dll'
+          'code\x64\Release\*.exe'
+          'code\x64\Release\*.pdb'
         if-no-files-found: 'error'
         compression-level: 0
