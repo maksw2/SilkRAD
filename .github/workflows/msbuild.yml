@@ -62,6 +62,9 @@ jobs:
         echo %path%
         echo:
         msbuild SilkRAD.sln /p:Configuration=Release
+    - name: List Debug Directory
+      run: |
+        dir "D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Debug\"
     - name: Publish Artifact Debug
       uses: actions/upload-artifact@v4.6.2
       with:
