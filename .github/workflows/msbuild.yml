@@ -13,54 +13,60 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
     - name: Set up MSBuild and NuGet Path
-      shell: 'C:\Program Files\Git\bin\bash.exe'
+      shell: pwsh
       run:
-        echo "D:\vs2017\VC\Tools\MSVC\14.16.27023\bin\HostX64\x64" >> $GITHUB_PATH
-        echo "D:\vs2017\Common7\IDE\VC\VCPackages" >> $GITHUB_PATH
-        echo "D:\vs2017\Common7\IDE\CommonExtensions\Microsoft\TestWindow" >> $GITHUB_PATH
-        echo "D:\vs2017\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer" >> $GITHUB_PATH
-        echo "D:\vs2017\MSBuild\15.0\bin\Roslyn" >> $GITHUB_PATH
-        echo "D:\vs2017\Team Tools\Performance Tools\x64" >> $GITHUB_PATH
-        echo "D:\vs2017\Team Tools\Performance Tools" >> $GITHUB_PATH
-        echo "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\\x64" >> $GITHUB_PATH
-        echo "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\" >> $GITHUB_PATH
-        echo "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.1 Tools\x64\" >> $GITHUB_PATH
-        echo "C:\Program Files (x86)\HTML Help Workshop" >> $GITHUB_PATH
-        echo "C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64" >> $GITHUB_PATH
-        echo "C:\Program Files (x86)\Windows Kits\10\bin\x64" >> $GITHUB_PATH
-        echo "D:\vs2017\MSBuild\15.0\bin" >> $GITHUB_PATH
-        echo "C:\Windows\Microsoft.NET\Framework64\v4.0.30319" >> $GITHUB_PATH
-        echo "D:\vs2017\Common7\IDE\" >> $GITHUB_PATH
-        echo "D:\vs2017\Common7\Tools\" >> $GITHUB_PATH
-        echo "C:\VulkanSDK\1.4.304.0\Bin" >> $GITHUB_PATH
-        echo "C:\Program Files (x86)\VMware\VMware Workstation\bin\" >> $GITHUB_PATH
-        echo "C:\Program Files\Microsoft MPI\Bin\" >> $GITHUB_PATH
-        echo "C:\Program Files\ImageMagick-7.1.1-Q16-HDRI" >> $GITHUB_PATH
-        echo "C:\Windows\system32" >> $GITHUB_PATH
-        echo "C:\Windows" >> $GITHUB_PATH
-        echo "C:\Windows\System32\Wbem" >> $GITHUB_PATH
-        echo "C:\Windows\System32\WindowsPowerShell\v1.0\" >> $GITHUB_PATH
-        echo "C:\Windows\System32\OpenSSH\" >> $GITHUB_PATH
-        echo "C:\ProgramData\chocolatey\bin" >> $GITHUB_PATH
-        echo "C:\Program Files\nodejs\" >> $GITHUB_PATH
-        echo "C:\Users\maksw\AppData\Local\Microsoft\WindowsApps" >> $GITHUB_PATH
-        echo "C:\Program Files\Git\cmd" >> $GITHUB_PATH
-        echo "C:\Program Files\PuTTY\" >> $GITHUB_PATH
-        echo "C:\Program Files\CMake\bin" >> $GITHUB_PATH
-        echo "C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR" >> $GITHUB_PATH
-        echo "C:\msys64\ucrt64\bin" >> $GITHUB_PATH
-        echo "C:\Program Files\7-Zip" >> $GITHUB_PATH
-        echo "C:\Program Files\Certbot\bin" >> $GITHUB_PATH
-        echo "C:\onpath" >> $GITHUB_PATH
-        echo "C:\Program Files\Meson\" >> $GITHUB_PATH
-        echo "C:\Program Files\PowerShell\7\" >> $GITHUB_PATH
-        echo "C:\Program Files\Docker\Docker\resources\bin" >> $GITHUB_PATH
-        echo "C:\php" >> $GITHUB_PATH
-        echo "C:\ProgramData\ComposerSetup\bin" >> $GITHUB_PATH
-        echo "C:\Users\maksw\AppData\Roaming\Composer\vendor\bin" >> $GITHUB_PATH
-        echo "D:\vs2017\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin" >> $GITHUB_PATH
-        echo "D:\vs2017\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja" >> $GITHUB_PATH
-        echo "C:\Users\maksw\AppData\Local\AzureFunctionsTools\Releases\1.13.2\cli_x64" >> $GITHUB_PATH
+        $paths = @(
+          echo "D:\vs2017\VC\Tools\MSVC\14.16.27023\bin\HostX64\x64"
+          echo "D:\vs2017\Common7\IDE\VC\VCPackages"
+          echo "D:\vs2017\Common7\IDE\CommonExtensions\Microsoft\TestWindow"
+          echo "D:\vs2017\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer"
+          echo "D:\vs2017\MSBuild\15.0\bin\Roslyn"
+          echo "D:\vs2017\Team Tools\Performance Tools\x64"
+          echo "D:\vs2017\Team Tools\Performance Tools"
+          echo "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\\x64"
+          echo "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\"
+          echo "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.1 Tools\x64\"
+          echo "C:\Program Files (x86)\HTML Help Workshop"
+          echo "C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64"
+          echo "C:\Program Files (x86)\Windows Kits\10\bin\x64"
+          echo "D:\vs2017\MSBuild\15.0\bin"
+          echo "C:\Windows\Microsoft.NET\Framework64\v4.0.30319"
+          echo "D:\vs2017\Common7\IDE\"
+          echo "D:\vs2017\Common7\Tools\"
+          echo "C:\VulkanSDK\1.4.304.0\Bin"
+          echo "C:\Program Files (x86)\VMware\VMware Workstation\bin\"
+          echo "C:\Program Files\Microsoft MPI\Bin\"
+          echo "C:\Program Files\ImageMagick-7.1.1-Q16-HDRI"
+          echo "C:\Windows\system32"
+          echo "C:\Windows"
+          echo "C:\Windows\System32\Wbem"
+          echo "C:\Windows\System32\WindowsPowerShell\v1.0\"
+          echo "C:\Windows\System32\OpenSSH\"
+          echo "C:\ProgramData\chocolatey\bin"
+          echo "C:\Program Files\nodejs\"
+          echo "C:\Users\maksw\AppData\Local\Microsoft\WindowsApps"
+          echo "C:\Program Files\Git\cmd"
+          echo "C:\Program Files\PuTTY\"
+          echo "C:\Program Files\CMake\bin"
+          echo "C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR"
+          echo "C:\msys64\ucrt64\bin"
+          echo "C:\Program Files\7-Zip"
+          echo "C:\Program Files\Certbot\bin"
+          echo "C:\onpath"
+          echo "C:\Program Files\Meson\"
+          echo "C:\Program Files\PowerShell\7\"
+          echo "C:\Program Files\Docker\Docker\resources\bin"
+          echo "C:\php"
+          echo "C:\ProgramData\ComposerSetup\bin"
+          echo "C:\Users\maksw\AppData\Roaming\Composer\vendor\bin"
+          echo "D:\vs2017\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin"
+          echo "D:\vs2017\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja"
+          echo "C:\Users\maksw\AppData\Local\AzureFunctionsTools\Releases\1.13.2\cli_x64"
+        )
+
+        foreach ($path in $paths) {
+            Add-Content -Path $env:GITHUB_PATH -Value $path
+        }
     - name: Set up Enviorment & Restore NuGet packages
       run: |
         nuget restore code/SilkRAD.sln
