@@ -68,10 +68,10 @@ jobs:
             Add-Content -Path $env:GITHUB_PATH -Value $path
         }
     - name: Build Debug
-      shell: 'C:\Windows\System32\cmd.exe'
+      shell: 'C:\Windows\System32\cmd.exe {0}'
       run: msbuild code/SilkRAD.sln /p:Configuration=Debug
     - name: Build Release
-      shell: 'C:\Windows\System32\cmd.exe'
+      shell: 'C:\Windows\System32\cmd.exe {0}'
       run: msbuild code/SilkRAD.sln /p:Configuration=Release
     - name: Publish Artifact Debug
       uses: actions/upload-artifact@v4.3.3
