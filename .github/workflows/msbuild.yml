@@ -10,65 +10,76 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Set up MSBuild and NuGet Path
-        shell: pwsh
-        run: |
-          $paths = @(
-            "D:\vs2017\VC\Tools\MSVC\14.16.27023\bin\HostX64\x64",
-            "D:\vs2017\Common7\IDE\VC\VCPackages",
-            "D:\vs2017\Common7\IDE\CommonExtensions\Microsoft\TestWindow",
-            "D:\vs2017\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer",
-            "D:\vs2017\MSBuild\15.0\bin\Roslyn",
-            "D:\vs2017\Team Tools\Performance Tools\x64",
-            "D:\vs2017\Team Tools\Performance Tools",
-            "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\\x64",
-            "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\",
-            "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.1 Tools\x64\",
-            "C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64",
-            "C:\Program Files (x86)\Windows Kits\10\bin\x64",
-            "D:\vs2017\MSBuild\15.0\bin",
-            "D:\vs2017\Common7\IDE\",
-            "D:\vs2017\Common7\Tools\",
-            "C:\Windows\system32",
-            "C:\Windows",
-            "C:\Windows\System32\WindowsPowerShell\v1.0\",
-            "C:\Program Files\PowerShell\7\",
-            "D:\vs2017\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin",
-            "D:\vs2017\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja"
-          )
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Set up MSBuild and NuGet Path
+      shell: pwsh
+      run:
+        $paths = @(
+          echo "D:\vs2017\VC\Tools\MSVC\14.16.27023\bin\HostX64\x64"
+          echo "D:\vs2017\Common7\IDE\VC\VCPackages"
+          echo "D:\vs2017\Common7\IDE\CommonExtensions\Microsoft\TestWindow"
+          echo "D:\vs2017\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer"
+          echo "D:\vs2017\MSBuild\15.0\bin\Roslyn"
+          echo "D:\vs2017\Team Tools\Performance Tools\x64"
+          echo "D:\vs2017\Team Tools\Performance Tools"
+          echo "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\\x64"
+          echo "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\"
+          echo "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.1 Tools\x64\"
+          echo "C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64"
+          echo "C:\Program Files (x86)\Windows Kits\10\bin\x64"
+          echo "D:\vs2017\MSBuild\15.0\bin"
+          echo "D:\vs2017\Common7\IDE\"
+          echo "D:\vs2017\Common7\Tools\"
+          echo "C:\Windows\system32"
+          echo "C:\Windows"
+          echo "C:\Windows\System32\WindowsPowerShell\v1.0\"
+          echo "C:\Program Files\PowerShell\7\"
+          echo "D:\vs2017\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin"
+          echo "D:\vs2017\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja"
+        )
 
-          foreach ($path in $paths) {
+        foreach ($path in $paths) {
             Add-Content -Path $env:GITHUB_PATH -Value $path
-          }
-      - name: Build Debug and Release
-        shell: cmd
-        run: |
-          cd D:\actions-runner\_work\SilkRAD\SilkRAD\code
-          echo:
-          echo %cd%
-          echo:
-          echo %path%
-          echo:
-          msbuild SilkRAD.sln /p:Configuration=Debug /p:Configuration=Release /m
-      - name: Publish Artifact Debug
-        uses: actions/upload-artifact@v4.6.2
-        with:
-          name: SilkRAD Debug
-          path: |
-            'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Debug\*.dll'
-            'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Debug\*.exe'
-            'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Debug\*.pdb'
-          if-no-files-found: 'error'
-          compression-level: 0
-      - name: Publish Artifact Release
-        uses: actions/upload-artifact@v4.6.2
-        with:
-          name: SilkRAD Release
-          path: |
-            'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Release\*.dll'
-            'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Release\*.exe'
-            'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Release\*.pdb'
-          if-no-files-found: 'error'
-          compression-level: 0
+        }
+    - name: Build Debug
+      shell: cmd
+      run: |
+        cd D:\actions-runner\_work\SilkRAD\SilkRAD\code
+        echo:
+        echo %cd%
+        echo:
+        echo %path%
+        echo:
+        msbuild SilkRAD.sln /p:Configuration=Debug
+    - name: Build Release
+      shell: cmd
+      run: |
+        cd D:\actions-runner\_work\SilkRAD\SilkRAD\code
+        echo:
+        echo %cd%
+        echo:
+        echo %path%
+        echo:
+        msbuild SilkRAD.sln /p:Configuration=Release
+    - name: Publish Artifact Debug
+      uses: actions/upload-artifact@v4.6.2
+      with:
+        name: SilkRAD Debug
+        path: |
+          'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Debug\*.dll'
+          'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Debug\*.exe'
+          'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Debug\*.pdb'
+        # it already is my pc only so what do i care
+        if-no-files-found: 'error'
+        compression-level: 0
+    - name: Publish Artifact Release
+      uses: actions/upload-artifact@v4.6.2
+      with:
+        name: SilkRAD Release
+        path: |
+          'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Release\*.dll'
+          'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Release\*.exe'
+          'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Release\*.pdb'
+        if-no-files-found: 'error'
+        compression-level: 0
