@@ -70,10 +70,10 @@ jobs:
       with:
         name: SilkRAD Debug
         path: |
-          'code\x64\Debug\cudart32_100.dll'
-          'code\x64\Debug\cudart64_100.dll'
-          'code\x64\Debug\*.exe'
-          'code\x64\Debug\*.pdb'
+          'code/x64/Debug/cudart32_100.dll'
+          'code/x64/Debug/cudart64_100.dll'
+          'code/x64/Debug/*.exe'
+          'code/x64/Debug/*.pdb'
         if-no-files-found: 'error'
         compression-level: 0
     - name: Publish Artifact Release
@@ -81,9 +81,9 @@ jobs:
       with:
         name: SilkRAD Release
         path: |
-          'code\x64\Release\cudart32_100.dll'
-          'code\x64\Release\cudart64_100.dll'
-          'code\x64\Release\*.exe'
-          'code\x64\Release\*.pdb'
+          'code/x64/Release/cudart32_100.dll'
+          'code/x64/Release/cudart64_100.dll'
+          'code/x64/Release/*.exe'
+          'code/x64/Release/*.pdb'
         if-no-files-found: 'error'
         compression-level: 0
