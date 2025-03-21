@@ -70,13 +70,13 @@ jobs:
     - name: Build Debug
       shell: 'C:\Windows\System32\cmd.exe /C "CALL "{0}""'
       run: |
-        cd D:\actions-runner\_work\SilkRAD\SilkRAD\code
-        msbuild SilkRAD.sln /p:Configuration=Debug
+        Set-Location -Path D:\actions-runner\_work\SilkRAD\SilkRAD\code
+        cmd.exe /c msbuild SilkRAD.sln /p:Configuration=Debug
     - name: Build Release
       shell: 'C:\Windows\System32\cmd.exe /C "CALL "{0}""'
       run: |
-        cd D:\actions-runner\_work\SilkRAD\SilkRAD\code
-        msbuild SilkRAD.sln /p:Configuration=Release
+        Set-Location -Path D:\actions-runner\_work\SilkRAD\SilkRAD\code
+        cmd.exe /c msbuild SilkRAD.sln /p:Configuration=Release
     - name: Publish Artifact Debug
       uses: actions/upload-artifact@v4.6.2
       with:
