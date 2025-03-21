@@ -67,12 +67,15 @@ jobs:
         foreach ($path in $paths) {
             Add-Content -Path $env:GITHUB_PATH -Value $path
         }
-    - name: Set up Enviorment & Restore NuGet packages
+    - name: Restore NuGet packages
+      shell: cmd
       run: |
         nuget restore code/SilkRAD.sln
     - name: Build Debug
+      shell: cmd
       run: msbuild code/SilkRAD.sln /p:Configuration=Debug
     - name: Build Release
+      shell: cmd
       run: msbuild code/SilkRAD.sln /p:Configuration=Release
     - name: Publish Artifact Debug
       uses: actions/upload-artifact@v4.3.3
