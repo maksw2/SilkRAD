@@ -13,7 +13,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
     - name: Set up MSBuild and NuGet Path
-      shell: bash
+      shell: 'C:\Program Files\Git\bin\bash.exe'
       run:
         echo "D:\vs2017\VC\Tools\MSVC\14.16.27023\bin\HostX64\x64" >> $GITHUB_PATH
         echo "D:\vs2017\Common7\IDE\VC\VCPackages" >> $GITHUB_PATH
