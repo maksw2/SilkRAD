@@ -68,13 +68,17 @@ jobs:
             Add-Content -Path $env:GITHUB_PATH -Value $path
         }
     - name: Build Debug
+      shell: cmd
       run: |
-        Set-Location -Path D:\actions-runner\_work\SilkRAD\SilkRAD\code
-        cmd.exe /c msbuild SilkRAD.sln /p:Configuration=Debug
+        cd D:\actions-runner\_work\SilkRAD\SilkRAD\code
+        echo %cd%
+        msbuild SilkRAD.sln /p:Configuration=Debug
     - name: Build Release
+      shell: cmd
       run: |
-        Set-Location -Path D:\actions-runner\_work\SilkRAD\SilkRAD\code
-        cmd.exe /c msbuild SilkRAD.sln /p:Configuration=Release
+        cd D:\actions-runner\_work\SilkRAD\SilkRAD\code
+        echo %cd%
+        msbuild SilkRAD.sln /p:Configuration=Release
     - name: Publish Artifact Debug
       uses: actions/upload-artifact@v4.6.2
       with:
