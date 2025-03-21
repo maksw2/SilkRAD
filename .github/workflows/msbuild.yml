@@ -70,7 +70,7 @@ jobs:
       with:
         name: SilkRAD Debug
         path: |
-          'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Debug\*.dll'
+          'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Debug\cudart*.dll'
           'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Debug\*.exe'
           'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Debug\*.pdb'
         # it already is my pc only so what do i care
@@ -81,7 +81,7 @@ jobs:
       with:
         name: SilkRAD Release
         path: |
-          'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Release\*.dll'
+          'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Release\cudart*.dll'
           'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Release\*.exe'
           'D:\actions-runner\_work\SilkRAD\SilkRAD\code\x64\Release\*.pdb'
         if-no-files-found: 'error'
