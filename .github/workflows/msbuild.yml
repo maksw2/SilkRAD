@@ -65,7 +65,7 @@ jobs:
     - name: Publish Artifact Debug
       uses: actions/upload-artifact@v4.6.2
       with:
-        name: SilkRAD Debug-${{ GITHUB_SHA }}
+        name: SilkRAD Debug-${{ github.sha }}
         path: |
           code/x64/Debug/cudart32_100.dll
           code/x64/Debug/cudart64_100.dll
@@ -76,7 +76,7 @@ jobs:
     - name: Publish Artifact Release
       uses: actions/upload-artifact@v4.6.2
       with:
-        name: SilkRAD Release-${{ GITHUB_SHA }}
+        name: SilkRAD Release-${{ github.sha }}
         path: |
           code/x64/Release/cudart32_100.dll
           code/x64/Release/cudart64_100.dll
