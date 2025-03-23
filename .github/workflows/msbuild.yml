@@ -12,6 +12,7 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+
     - name: Set up MSBuild and NuGet Path
       shell: pwsh
       run:
@@ -42,30 +43,26 @@ jobs:
         foreach ($path in $paths) {
             Add-Content -Path $env:GITHUB_PATH -Value $path
         }
+      
     - name: Build Debug
       shell: cmd
       run: |
-        cd D:\actions-runner\_work\SilkRAD\SilkRAD\code
-        echo:
-        echo %cd%
-        echo:
-        echo %path%
-        echo:
-        msbuild SilkRAD.sln /p:Configuration=Debug
+        msbuild code\SilkRAD.sln /p:Configuration=Debug
+
     - name: Build Release
       shell: cmd
-      run: |
-        cd D:\actions-runner\_work\SilkRAD\SilkRAD\code
-        echo:
-        echo %cd%
-        echo:
-        echo %path%
-        echo:
-        msbuild SilkRAD.sln /p:Configuration=Release
+      run:
+        msbuild code\SilkRAD.sln /p:Configuration=Release
+
+    - name: Get Short Commit Hash
+      id: short_sha
+      shell: pwsh
+      run: echo "sha_short=$(${env:GITHUB_SHA}.Substring(0,7))" | Out-File -FilePath $env:GITHUB_ENV -Append
+
     - name: Publish Artifact Debug
       uses: actions/upload-artifact@v4.6.2
       with:
-        name: SilkRAD Debug-${{ github.sha }}
+        name: SilkRAD Debug-${{ env.sha_short }}
         path: |
           code/x64/Debug/cudart32_100.dll
           code/x64/Debug/cudart64_100.dll
@@ -73,10 +70,11 @@ jobs:
           code/x64/Debug/*.pdb
         if-no-files-found: 'error'
         compression-level: 0
+
     - name: Publish Artifact Release
       uses: actions/upload-artifact@v4.6.2
       with:
-        name: SilkRAD Release-${{ github.sha }}
+        name: SilkRAD Release-${{ env.sha_short }}
         path: |
           code/x64/Release/cudart32_100.dll
           code/x64/Release/cudart64_100.dll
